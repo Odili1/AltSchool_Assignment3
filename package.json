@@ -1,0 +1,22 @@
+{
+  "name": "altschool_assignment3",
+  "version": "1.0.0",
+  "description": "Using Express to implement an Inventory Management System",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start-web": "node web.js",
+    "start-api": "node api.js",
+    "start-dev-web": "nodemon web.js",
+    "start-dev-api": "node api.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}
