@@ -6,7 +6,7 @@ const auth = require('../middlewares/global-middlewares')
 Router.use(auth.api_Key)
 
 // POST Requests
-Router.post('/', auth.checkAdmin,controller.createItem);
+Router.post('/', auth.checkAdmin, controller.createItem);
 
 // GET Requests
 Router.get('/', controller.getItems);
