@@ -1,4 +1,5 @@
 // const { response } = require('express');
+const { log } = require('console');
 const fs = require('fs');
 const path = require('path');
 
@@ -18,7 +19,6 @@ const handleResponse = (req, res) => ({code, data = null, error = null, message 
 // Create Item (POST)
 exports.createItem = (req, res) => {
     const Response = handleResponse(req, res);
-
     if (!req.body){
         return Response({
             code: 412,
@@ -35,7 +35,7 @@ exports.createItem = (req, res) => {
         data: req.body,
         message: 'Item Created'
     })
-
+    
 }
 
 
@@ -43,13 +43,24 @@ exports.createItem = (req, res) => {
 // Get all Items (GET)
 exports.getItems = (req, res) => {
     const Response = handleResponse(req, res);
-
+    
+    console.log(req.query);
     if (!data.items.length){
         return Response({
             code: 404,
             message: 'No data found'
         });
     };
+
+    if (req.query && req.query.size){
+        const filteredData = data.items.filter((item) => item.size === req.query.size)
+        console.log(filteredData);
+        return Response({
+            code: 200,
+            data: filteredData,
+            message: 'Data found'
+        })
+    }
 
     Response({
         code: 200,
